@@ -1,7 +1,8 @@
 Create etl database
 Run this scripts in this order
 1. flat_log_v1.0 
-# 0. flat_lab_obs_v1.0
+### 0. flat_lab_obs_v1.0
 2. flat_obs_v1.0 
 3. flat_visit_summary_v1.0
 4. flat_latest_hiv_summary_v1.0
+
