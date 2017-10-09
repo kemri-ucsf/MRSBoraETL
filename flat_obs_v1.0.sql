@@ -1,4 +1,10 @@
-# This is the ETL table for flat_obs
+use etl;
+drop procedure if exists generate_flat_obs;
+ DELIMITER $$
+ CREATE PROCEDURE generate_flat_obs()
+ 		BEGIN
+   
+   # This is the ETL table for flat_obs
 # obs concept_ids:
 
 # encounter types: It has all the encounters in the core openmrs
@@ -338,4 +344,9 @@ drop table voided_obs;
 select @end := now();
 insert into flat_log values (@start,@last_date_created,@table_version,timestampdiff(second,@start,@end));
 select concat(@table_version," : Time to complete: ",timestampdiff(minute, @start, @end)," minutes");
--- select * from sync_server_class;
+
+
+                      END $$
+	DELIMITER ;
+
+call generate_flat_obs();
